@@ -1,0 +1,13 @@
+{
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Follow the conventional commit message format. Use emojis to indicate the type of change, such as '🤖' for AI/LLM changes, '📄' for PDF processing updates, '✨' for new features, '🐛' for bug fixes, '📝' for documentation updates, '🔧' for configuration changes, '⚡' for performance improvements, '🎨' for UI/Streamlit changes. Use multiple emojis for changes to different things. Ensure the message is concise and descriptive and always includes a list of key changes."
+    }
+  ],
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true
+  }
+}
