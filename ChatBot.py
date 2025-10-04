@@ -1,11 +1,19 @@
 import streamlit as st
+import os
 from PyPDF2 import PdfReader
+from langchain.chains.question_answering import load_qa_chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings#OpenAIEmbeddings is a class
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
+#OpenAIEmbeddings is a class
+from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
+from langchain.chains.retrieval import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
+
+
 # 1st part
-OpenAI_API_Key= "sk-proj-z8fcSSSEuixrmg7q_EOxlS0aKcRZB8ecnIxw-_LBi8LDjqHGqeRzoIOmsGYZ6WoYFY9M2UaAE2T3BlbkFJwNZ9V0MLRBh4n6zHuyq4zqgDdxt3D7HmhKvzxGaWDNYNTR6YWoF-P3n3Kq4HbyMPfvc6ckin8Ass\""
+
 
 st.title("NoteBot")
 
@@ -24,12 +32,48 @@ if file is not None:
     #converting into small chunks i.e. tokens
     splitter=RecursiveCharacterTextSplitter(separators=[""],chunk_size=250,chunk_overlap=50)
     chunks=splitter.split_text(text) # outputs as list of chunks like chunk 1,chunk 2....
+    #st.write(chunks)
 
     # converting and giving embedded vectors of our file chunks to vector database
-    embedder=OpenAIEmbeddings(api_key=OpenAI_API_Key) #object creation
+    embedder = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
 
-    vector_store=FAISS.from_texts(chunks,embedder)
+    vector_store=FAISS.from_texts(chunks,embedder)#creates vector db
+    # stores embedding vectors of given doc
 
 # 2nd part
+    question=st.text_input("Ask a Question")
+
+    if question:
+        matching_chunks_ie_doc_objs=vector_store.similarity_search(question)
+        #internally converts query to embeding vectors and then fetches matching chunks...
+
+        #defining llm
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash",
+            api_key=os.getenv("GEMINI_API_KEY"),
+
+            temperature=0,
+            max_output_tokens=300
+        )
+
+        # generate response
+
+        #template for prompt to be given to llm after context ie doc objs /chunks are added
+        customized_prompt = ChatPromptTemplate.from_template(
+            """ You are my assistant tutor. Answer the question based on the following context and
+            if you did not get the context still answer by your intelligence :
+            {context}
+            Question: {input}
+            """)
+
+
+        chain = create_stuff_documents_chain(llm, customized_prompt)
+        # Corrected line
+        output = chain.invoke({"input": question, "context": matching_chunks_ie_doc_objs})
+        st.write(output)
+
+
+
+
 
 
