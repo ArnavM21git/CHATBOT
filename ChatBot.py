@@ -11,11 +11,14 @@ from langchain_core.prompts import ChatPromptTemplate
 # 1st part
 
 
-st.title("NoteBot")
+st.set_page_config(page_title="NoteBot🤖", page_icon="🤖")
+st.title("NoteBot 🤖")
+st.caption("Your intelligent assistant for PDF documents.")
 
 with st.sidebar:
     st.title("My Notes")
-    file=st.file_uploader("UPLOAD REFERENCE PDF",type = "pdf")
+    st.write("Upload a PDF and click 'Process' to start chatting.")
+    file=st.file_uploader("",type = "pdf")
 
 
 if file is not None:
