@@ -67,7 +67,7 @@ if file is not None:
 
 
         chain = create_stuff_documents_chain(llm, customized_prompt)
-        # Corrected line
+        
         output = chain.invoke({"input": question, "context": matching_chunks_ie_doc_objs})
         st.write(output)
 
