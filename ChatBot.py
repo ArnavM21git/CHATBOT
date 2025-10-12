@@ -33,7 +33,8 @@ if file is not None:
     chunks=splitter.split_text(text) # outputs as list of chunks like chunk 1,chunk 2....
     #st.write(chunks)
 
-    # converting and giving embedded vectors of our file chunks to vector database
+
+    #converting and giving embedded vectors of our file chunks to vector database
     embedder = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
 
     vector_store=FAISS.from_texts(chunks,embedder)#creates vector db
@@ -55,7 +56,8 @@ if file is not None:
             max_output_tokens=300
         )
 
-        # generate response
+
+        
 
         #template for prompt to be given to llm after context ie doc objs /chunks are added
         customized_prompt = ChatPromptTemplate.from_template(
@@ -68,6 +70,7 @@ if file is not None:
 
         chain = create_stuff_documents_chain(llm, customized_prompt)
         
+        # generate response
         output = chain.invoke({"input": question, "context": matching_chunks_ie_doc_objs})
         st.write(output)
 
