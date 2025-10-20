@@ -1,7 +1,7 @@
 # NoteBot - PDF Question Answering ChatBot
 
-[![Deployed on Streamlit](https://img.shields.io/badge/Deployed%20on-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)
-[![View on Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)
+[![Deployed on Streamlit](https://img.shields.io/badge/Deployed%20on-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://chatbot-arnavm.streamlit.app/)
+[![View on Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-arnavm.streamlit.app/)
 
 A Streamlit-based chatbot that allows you to upload PDF documents and ask questions about their content using Google's Gemini AI.
 
