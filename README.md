@@ -1,6 +1,13 @@
 # NoteBot - PDF Question Answering ChatBot
 
+[![Deployed on Streamlit](https://img.shields.io/badge/Deployed%20on-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)
+[![View on Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)
+
 A Streamlit-based chatbot that allows you to upload PDF documents and ask questions about their content using Google's Gemini AI.
+
+## 🚀 Live Demo
+
+Try the live app here: **[NoteBot on Streamlit Cloud](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)**
 
 ## Features
 
@@ -17,14 +24,29 @@ A Streamlit-based chatbot that allows you to upload PDF documents and ask questi
 
 ## Installation
 
-1. Clone the repository or download the files
-
-2. Install required packages:
+1. Clone the repository:
 ```bash
-pip install streamlit PyPDF2 langchain langchain-openai langchain-google-genai langchain-community faiss-cpu
+git clone https://github.com/ArnavM21git/CHATBOT.git
+cd CHATBOT
 ```
 
-3. Set up your environment variables:
+2. Create and activate a virtual environment (recommended):
+```bash
+python -m venv venv
+# On Windows PowerShell:
+.\venv\Scripts\Activate.ps1
+# On Windows CMD:
+.\venv\Scripts\activate.bat
+# On Linux/Mac:
+source venv/bin/activate
+```
+
+3. Install required packages from requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up your environment variables:
    - Create a `.env` file in the project root
    - Add your Google AI API key:
      ```
@@ -59,6 +81,22 @@ streamlit run ChatBot.py
 - **Chunk Overlap**: 50 characters
 - **Model**: Gemini 2.5 Flash
 - **Max Output Tokens**: 300
+- **Embedding Model**: models/embedding-001
+- **Vector Database**: FAISS
+
+## Deployment on Streamlit Cloud
+
+This app is deployed on Streamlit Cloud. To deploy your own version:
+
+1. Fork this repository
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub account
+4. Select your forked repository
+5. Add your `GEMINI_API_KEY` in the Secrets section (Settings → Secrets):
+   ```toml
+   GEMINI_API_KEY = "your-api-key-here"
+   ```
+6. Click Deploy!
 
 ## Contributing
 
@@ -68,4 +106,8 @@ Feel free to submit issues and enhancement requests!
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2025
+Copyright (c) 2025 ArnavM21git
+
+---
+
+**Made with ❤️ using Streamlit and Google Gemini AI**
