@@ -7,7 +7,7 @@ A Streamlit-based chatbot that allows you to upload PDF documents and ask questi
 
 ## 🚀 Live Demo
 
-Try the live app here: **[NoteBot on Streamlit Cloud](https://chatbot-sjdm6apoxgqrrakwvbt4zi.streamlit.app)**
+Try the live app here: **[NoteBot on Streamlit Cloud](https://chatbot-arnavm.streamlit.app/)**
 
 ## Features
 
