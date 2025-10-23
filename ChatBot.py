@@ -37,7 +37,7 @@ if file is not None:
     #converting and giving embedded vectors of our file chunks to vector database
     embedder = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
 
-    vector_store=FAISS.from_texts(chunks,embedder)#creates vector db
+    vector_store=FAISS.from_texts(chunks,embedder)#creates vector db by faiss class object and
     # stores embedding vectors of given doc
 
 # 2nd part
