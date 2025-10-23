@@ -1,13 +1,24 @@
 {
-  "github.copilot.chat.commitMessageGeneration.instructions": [
-    {
-      "text": "Follow the conventional commit message format. Use emojis to indicate the type of change, such as '🤖' for AI/LLM changes, '📄' for PDF processing updates, '✨' for new features, '🐛' for bug fixes, '📝' for documentation updates, '🔧' for configuration changes, '⚡' for performance improvements, '🎨' for UI/Streamlit changes. Use multiple emojis for changes to different things. Ensure the message is concise and descriptive and always includes a list of key changes."
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Follow the conventional commit message format. Use emojis to indicate the type of change, such as '\ud83e\udd16' for AI/LLM changes, '\ud83d\udcc4' for PDF processing updates, '\u2728' for new features, '\ud83d\udc1b' for bug fixes, '\ud83d\udcdd' for documentation updates, '\ud83d\udd27' for configuration changes, '\u26a1' for performance improvements, '\ud83c\udfa8' for UI/Streamlit changes. Use multiple emojis for changes to different things. Ensure the message is concise and descriptive and always includes a list of key changes."
+        }
+    ],
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    },
+    "chat.promptFilesRecommendations": {
+        "speckit.constitution": true,
+        "speckit.specify": true,
+        "speckit.plan": true,
+        "speckit.tasks": true,
+        "speckit.implement": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        ".specify/scripts/bash/": true,
+        ".specify/scripts/powershell/": true
     }
-  ],
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black",
-  "files.exclude": {
-    "**/__pycache__": true,
-    "**/*.pyc": true
-  }
 }
