@@ -17,21 +17,28 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: Python 3.10+  
+**Primary Dependencies**: Streamlit, LangChain, Google Generative AI (Gemini), FAISS, PyPDF2  
+**Storage**: In-memory (FAISS vector store), session state (Streamlit)  
+**Testing**: pytest (unit tests, integration tests with mocked LLM, smoke tests)  
+**Target Platform**: Streamlit Community Cloud (Linux, Python 3.10+)
+**Project Type**: Web application (single Streamlit app)  
+**Performance Goals**: <2s PDF processing for typical documents, <5s response time for queries  
+**Constraints**: API rate limits (Gemini API), in-memory processing only, single-user sessions  
+**Scale/Scope**: Single-user sessions, documents up to 100 pages, conversational Q&A
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **UX-FIRST**: Does this feature maintain simple, intuitive user experience?
+- [ ] **INCREMENTAL-COMPLEXITY**: Are basic features stable before adding advanced capabilities?
+- [ ] **TECH-STACK-LOCK**: Does implementation use only approved stack (Python, Streamlit, LangChain, Gemini, FAISS, PyPDF2)?
+- [ ] **TEST-DISCIPLINE**: Are test requirements defined (unit, integration, smoke)?
+- [ ] **DATA-PROTECTION**: Are API keys secured? Is user data handled safely?
+
+**Stack compliance**: Python 3.10+, Streamlit, LangChain, Google Gemini AI, FAISS, PyPDF2
+**Security check**: No hardcoded secrets, environment variables or Streamlit secrets only
 
 ## Project Structure
 

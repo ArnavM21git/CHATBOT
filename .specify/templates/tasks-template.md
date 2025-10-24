@@ -8,6 +8,13 @@ description: "Task list template for feature implementation"
 **Input**: Design documents from `/specs/[###-feature-name]/`
 **Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
 
+**Constitution Compliance**: All tasks must align with project principles:
+- UX-FIRST: Prioritize user experience and simplicity
+- INCREMENTAL-COMPLEXITY: Basic features before advanced
+- TECH-STACK-LOCK: Use approved stack only (Python, Streamlit, LangChain, Gemini, FAISS, PyPDF2)
+- TEST-DISCIPLINE: Include test tasks for critical paths
+- DATA-PROTECTION: Secure API keys, protect user data
+
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
