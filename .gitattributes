@@ -1,0 +1,62 @@
+# GitAttributes for NoteBot ChatBot# GitAttributes for NoteBot ChatBot
+
+# Fix GitHub language statistics to show Python as primary language# Fix GitHub language statistics to show Python as primary language
+
+
+
+# Exclude SpecKit infrastructure from language statistics# Exclude SpecKit infrastructure from language statistics
+
+.specify/** linguist-vendored.specify/** linguist-vendored
+
+specs/** linguist-documentationspecs/** linguist-documentation
+
+
+
+# Mark documentation files# Mark documentation files
+
+*.md linguist-documentation*.md linguist-documentation
+
+README.md linguist-documentationREADME.md linguist-documentation
+
+LICENSE linguist-documentationLICENSE linguist-documentation
+
+
+
+# Ensure Python is detected as primary language# Ensure Python is detected as primary language
+
+*.py linguist-detectable=true*.py linguist-detectable=true
+
+*.ps1 linguist-vendored*.ps1 linguist-vendored
+
+
+
+# Handle line endings# Handle line endings
+
+* text=auto* text=auto
+
+*.py text eol=lf*.py text eol=lf
+
+*.md text eol=lf*.md text eol=lf
+
+*.ps1 text eol=crlf*.ps1 text eol=crlf
+
+*.bat text eol=crlf*.bat text eol=crlf
+
+
+
+# Binary files# Binary files
+
+*.pdf binary*.pdf binary
+
+*.png binary*.png binary
+
+*.jpg binary*.jpg binary
+
+*.jpeg binary*.jpeg binary
+
+*.gif binary*.gif binary
+
+*.ico binary*.ico binary
+
+*.pyc binary*.pyc binary
+
