@@ -16,6 +16,12 @@ Try the live app here: **[NoteBot on Streamlit Cloud](https://chatbot-arnavm.str
 - 🔍 Semantic search using FAISS vector database
 - ✨ Powered by Google Gemini AI
 - 💬 Intelligent context-aware responses
+- 📝 **NEW: Session State Chat History**
+  - 💾 Persistent conversations across page refreshes
+  - 🔄 Context-aware follow-up questions
+  - 🔒 Session isolation and privacy protection
+  - 📊 Chat history sidebar with message tracking
+  - 🗑️ Clear history functionality
 
 ## Prerequisites
 
@@ -73,7 +79,8 @@ streamlit run ChatBot.py
 3. **Embedding**: Converts text chunks into vector embeddings
 4. **Vector Storage**: Stores embeddings in FAISS vector database
 5. **Similarity Search**: Finds relevant chunks based on user questions
-6. **Answer Generation**: Uses Gemini AI to generate contextual answers
+6. **Chat History Management**: Maintains conversation context across sessions
+7. **Answer Generation**: Uses Gemini AI to generate contextual answers with conversation awareness
 
 ## Configuration
 
@@ -83,6 +90,20 @@ streamlit run ChatBot.py
 - **Max Output Tokens**: 300
 - **Embedding Model**: models/embedding-001
 - **Vector Database**: FAISS
+- **Chat History Limit**: 50 messages (25 Q&A pairs)
+- **Session Storage**: Browser sessionStorage for persistence
+
+## Advanced Features
+
+### Session State Chat History
+
+The application now includes a comprehensive chat history system. See [SESSION_STATE_CHAT_HISTORY.md](SESSION_STATE_CHAT_HISTORY.md) for detailed documentation including:
+
+- Architecture and design patterns
+- Configuration options
+- Performance characteristics
+- Privacy and security measures
+- Troubleshooting guide
 
 ## Deployment on Streamlit Cloud
 

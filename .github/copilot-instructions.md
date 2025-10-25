@@ -1,4 +1,4 @@
-# Copilot Instructions for NoteBot ChatBot Project
+﻿# Copilot Instructions for NoteBot ChatBot Project
 
 ## Scope
 - This is a **Streamlit-based ChatBot** application using LangChain and Google Generative AI.

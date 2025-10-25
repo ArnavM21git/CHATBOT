@@ -46,3 +46,14 @@ wheels/
 # Uploaded files
 uploads/
 temp/
+
+# OS specific
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
