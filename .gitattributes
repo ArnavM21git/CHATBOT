@@ -1,33 +1,64 @@
-# GitAttributes for NoteBot ChatBot# GitAttributes for NoteBot ChatBot
+# GitAttributes for NoteBot ChatBot# GitAttributes for NoteBot ChatBot# GitAttributes for NoteBot ChatBot
+
+# Fix GitHub language statistics to show Python as primary language
 
 # Fix GitHub language statistics to show Python as primary language# Fix GitHub language statistics to show Python as primary language
 
+# Exclude SpecKit infrastructure from language statistics
 
+.specify/** linguist-vendored
+
+specs/** linguist-documentation
 
 # Exclude SpecKit infrastructure from language statistics# Exclude SpecKit infrastructure from language statistics
 
-.specify/** linguist-vendored.specify/** linguist-vendored
+# Mark documentation files
 
-specs/** linguist-documentationspecs/** linguist-documentation
+*.md linguist-documentation.specify/** linguist-vendored.specify/** linguist-vendored
 
+README.md linguist-documentation
 
-
-# Mark documentation files# Mark documentation files
-
-*.md linguist-documentation*.md linguist-documentation
-
-README.md linguist-documentationREADME.md linguist-documentation
-
-LICENSE linguist-documentationLICENSE linguist-documentation
+LICENSE linguist-documentationspecs/** linguist-documentationspecs/** linguist-documentation
 
 
 
-# Ensure Python is detected as primary language# Ensure Python is detected as primary language
+# Ensure Python is detected as primary language
 
-*.py linguist-detectable=true*.py linguist-detectable=true
+*.py linguist-detectable=true
 
-*.ps1 linguist-vendored*.ps1 linguist-vendored
+*.ps1 linguist-vendored# Mark documentation files# Mark documentation files
 
+
+
+# Handle line endings*.md linguist-documentation*.md linguist-documentation
+
+* text=auto
+
+*.py text eol=lfREADME.md linguist-documentationREADME.md linguist-documentation
+
+*.md text eol=lf
+
+*.ps1 text eol=crlfLICENSE linguist-documentationLICENSE linguist-documentation
+
+*.bat text eol=crlf
+
+
+
+# Binary files
+
+*.pdf binary# Ensure Python is detected as primary language# Ensure Python is detected as primary language
+
+*.png binary
+
+*.jpg binary*.py linguist-detectable=true*.py linguist-detectable=true
+
+*.jpeg binary
+
+*.gif binary*.ps1 linguist-vendored*.ps1 linguist-vendored
+
+*.ico binary
+
+*.pyc binary
 
 
 # Handle line endings# Handle line endings
