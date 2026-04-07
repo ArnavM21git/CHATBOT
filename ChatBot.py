@@ -51,7 +51,7 @@ if file is not None:
         text += page.extract_text() or ""
 
     #converting into small chunks i.e. tokens
-    splitter=RecursiveCharacterTextSplitter(separators=[""],chunk_size=250,chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", " ", ""], chunk_size=500, chunk_overlap=50)
     chunks=splitter.split_text(text) # outputs as list of chunks like chunk 1,chunk 2....
     #st.write(chunks)
 
@@ -59,7 +59,13 @@ if file is not None:
     #converting and giving embedded vectors of our file chunks to vector database
     embedder = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001", google_api_key=api_key) #object creation
 
-    vector_store=FAISS.from_texts(chunks,embedder)#creates vector db by faiss class object and
+    file_id = file.name + str(file.size)
+    if st.session_state.get("file_id") != file_id:
+        vector_store = FAISS.from_texts(chunks, embedder)
+        st.session_state["file_id"] = file_id
+        st.session_state["vector_store"] = vector_store
+
+    vector_store = st.session_state["vector_store"]#creates vector db by faiss class object and
     # stores embedding vectors of given doc
 
 # 2nd part
