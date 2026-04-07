@@ -81,7 +81,7 @@ streamlit run ChatBot.py
 - **Chunk Overlap**: 50 characters
 - **Model**: Gemini 2.5 Flash
 - **Max Output Tokens**: 300
-- **Embedding Model**: models/embedding-001
+- **Embedding Model**: gemini-embedding-001
 - **Vector Database**: FAISS
 
 ## Deployment on Streamlit Cloud

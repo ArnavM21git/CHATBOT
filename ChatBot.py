@@ -1,11 +1,16 @@
 import streamlit as st
 import os
+from importlib import import_module
 from PyPDF2 import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+
+try:
+    create_stuff_documents_chain = import_module("langchain.chains.combine_documents").create_stuff_documents_chain
+except ModuleNotFoundError:
+    create_stuff_documents_chain = import_module("langchain_classic.chains.combine_documents").create_stuff_documents_chain
 
 
 # 1st part
@@ -35,7 +40,7 @@ if file is not None:
 
 
     #converting and giving embedded vectors of our file chunks to vector database
-    embedder = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001", google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
+    embedder = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001", google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
 
     vector_store=FAISS.from_texts(chunks,embedder)#creates vector db by faiss class object and
     # stores embedding vectors of given doc
