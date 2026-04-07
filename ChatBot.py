@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
 
@@ -18,7 +18,7 @@ st.caption("Your intelligent assistant for PDF documents.")
 with st.sidebar:
     st.title("My Notes")
     st.write("Upload a PDF and click 'Process' to start chatting.")
-    file=st.file_uploader("",type = "pdf")
+    file=st.file_uploader("Upload a PDF", type="pdf", label_visibility="collapsed")
 
 
 if file is not None:
@@ -26,7 +26,7 @@ if file is not None:
     my_pdf=PdfReader(file)
     text=""
     for page in my_pdf.pages:
-        text+=page.extract_text()
+        text += page.extract_text() or ""
 
     #converting into small chunks i.e. tokens
     splitter=RecursiveCharacterTextSplitter(separators=[""],chunk_size=250,chunk_overlap=50)
@@ -35,7 +35,7 @@ if file is not None:
 
 
     #converting and giving embedded vectors of our file chunks to vector database
-    embedder = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
+    embedder = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001", google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
 
     vector_store=FAISS.from_texts(chunks,embedder)#creates vector db by faiss class object and
     # stores embedding vectors of given doc

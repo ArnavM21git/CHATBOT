@@ -1,5 +1,6 @@
 streamlit==1.39.0
 PyPDF2==3.0.1
+pycryptodome==3.23.0
 langchain==0.2.16
 langchain-core==0.2.38
 langchain-google-genai==1.0.10
