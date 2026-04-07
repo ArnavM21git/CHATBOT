@@ -13,6 +13,17 @@ except ModuleNotFoundError:
     create_stuff_documents_chain = import_module("langchain_classic.chains.combine_documents").create_stuff_documents_chain
 
 
+def get_gemini_api_key():
+    try:
+        secret_key = st.secrets.get("GEMINI_API_KEY")
+        if secret_key:
+            return secret_key
+    except Exception:
+        pass
+
+    return os.getenv("GEMINI_API_KEY")
+
+
 # 1st part
 
 
@@ -24,6 +35,12 @@ with st.sidebar:
     st.title("My Notes")
     st.write("Upload a PDF and click 'Process' to start chatting.")
     file=st.file_uploader("Upload a PDF", type="pdf", label_visibility="collapsed")
+
+
+api_key = get_gemini_api_key()
+if not api_key:
+    st.error("Set GEMINI_API_KEY in Streamlit Secrets or your local environment before uploading a PDF.")
+    st.stop()
 
 
 if file is not None:
@@ -40,7 +57,7 @@ if file is not None:
 
 
     #converting and giving embedded vectors of our file chunks to vector database
-    embedder = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001", google_api_key=os.getenv("GEMINI_API_KEY")) #object creation
+    embedder = GoogleGenerativeAIEmbeddings(model="gemini-embedding-001", google_api_key=api_key) #object creation
 
     vector_store=FAISS.from_texts(chunks,embedder)#creates vector db by faiss class object and
     # stores embedding vectors of given doc
@@ -55,7 +72,7 @@ if file is not None:
         #defining llm
         llm = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash",
-            api_key=os.getenv("GEMINI_API_KEY"),
+            api_key=api_key,
 
             temperature=0,
             max_output_tokens=300

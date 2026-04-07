@@ -96,6 +96,7 @@ This app is deployed on Streamlit Cloud. To deploy your own version:
    ```toml
    GEMINI_API_KEY = "your-api-key-here"
    ```
+   Streamlit Cloud reads this from `st.secrets`, so the app will not start embedding until the secret is set.
 6. Click Deploy!
 
 ## Contributing
